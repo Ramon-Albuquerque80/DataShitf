@@ -27,54 +27,6 @@ Relatórios e Dashboards: Geração de gráficos comparativos de produtividade (
 
 Edição e Auditoria: Permite correção de registros com histórico de alterações mantido para segurança e confiabilidade dos dados.
 
-
-📊 Métricas de Avaliação
-O sistema foi projetado para atender aos seguintes critérios de qualidade:
-
-Desempenho: Tempo de carregamento inferior a 3 segundos.
-
-Eficiência Operacional: Redução do tempo de registro de dados e geração de relatórios em até 5 segundos.
-
-Precisão: Índice de precisão das informações superior a 95% através de validações automáticas.
-
-📈 Métricas e Monitoramento
-O DataShift inclui dashboards para monitorar:
-
-Produtividade por Turno:
-
-Quantidade produzida por hora
-
-Tempo médio por produto
-
-Eficiência comparativa
-
-Análise de Tendências:
-
-Padrões semanais/mensais
-
-Identificação de gargalos
-
-Previsão de produção
-
-Relatórios Gerenciais:
-
-PDF com análises detalhadas
-
-Exportação para Excel
-
-Gráficos interativos
-
-🔒 Segurança
-Autenticação com hash SHA-256 + salt
-
-Controle de acesso baseado em perfis
-
-Histórico de auditoria de alterações
-
-Validação de dados em múltiplas camadas
-
-Proteção contra SQL Injection e XSS
-
 📚 Documentação Adicional
 Manual do Usuário
 
