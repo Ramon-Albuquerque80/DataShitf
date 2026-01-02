@@ -1,0 +1,50 @@
+# 📊 DataShift - Sistema de Controle de Produtividade
+
+## 📄 Sobre o Projeto
+Este projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC) para a disciplina de Engenharia de Software na Fatec Itapetininga. O objetivo principal é a informatização e o controle da produtividade dos funcionários no setor de produção.
+
+Atualmente, o processo de controle em muitas empresas é manual e variável, dificultando a identificação de padrões e a tomada de decisões. O **DataShift** visa solucionar esse problema através da coleta de dados de tempo e produção, gerando métricas de eficiência confiáveis.
+
+---
+
+## 🎯 Objetivos Principais
+* **Padronização:** Encontrar padrões na produção diária que varia conforme a demanda.
+* **Eliminação de Papel:** Substituir registros manuais físicos por um sistema digital centralizado.
+* **Tomada de Decisão:** Fornecer relatórios e gráficos visuais para gestores identificarem gargalos e tendências.
+
+---
+
+## 🚀 Funcionalidades
+O sistema foca estritamente no controle da produtividade da linha de produção. As principais funcionalidades incluem:
+
+* **Cadastramento de Usuário:** Criação de contas com níveis de acesso e autenticação segura.
+* **Seleção de Turno:** Definição da jornada de trabalho (Manhã/Tarde/Noite) para filtrar dados corretamente.
+* **Catálogo de Produtos:** Cadastro de diferentes tipos de produtos e suas especificações de produção (ex: tempos estimados, complexidade).
+* **Registro de Produção:** Inserção dos horários de início e fim da produção de cada item para cálculo automático de duração.
+* **Comentários e Feedback:** Campo para observações sobre a produção do dia (ex: problemas com matéria-prima ou maquinário).
+* **Relatórios e Dashboards:** Geração de gráficos comparativos de produtividade (Quantidade/Hora, Tempo Médio) para análise gerencial.
+* **Edição e Auditoria:** Permite correção de registros com histórico de alterações mantido para segurança e confiabilidade dos dados.
+
+---
+
+## 🛠️ Arquitetura e Tecnologias
+O projeto utiliza a seguinte infraestrutura:
+
+* **Frontend:** HTML5, CSS3, JavaScript (Cliente Web e Mobile).
+* **Backend:** Java (Tomcat 9.0, JVM 11).
+* **Banco de Dados:** PostgreSQL 14 (Acesso via JDBC).
+* **Servidor Web:** Nginx (Proxy Reverso e Balanceamento de Carga).
+* **Relatórios:** JasperReports para geração de arquivos PDF/Excel.
+
+---
+
+## 📊 Métricas de Avaliação
+O sistema foi projetado para atender aos seguintes critérios de qualidade:
+* **Desempenho:** Tempo de carregamento inferior a 3 segundos.
+* **Eficiência Operacional:** Redução do tempo de registro de dados e geração de relatórios em até 5 segundos.
+* **Precisão:** Índice de precisão das informações superior a 95% através de validações automáticas.
+
+---
+
+## 👤 Autor
+* Ramon Albuquerque Mariano
