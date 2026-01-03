@@ -1,0 +1,1 @@
+DataShift se trata de uma ideia de projeto onde busca encontrar métricas com base em dados da produtividade de um determinado produto, onde possibilita criação de metas, controle de produtividade além de aumentar a precisão em uma tomada de decisão.
