@@ -95,9 +95,11 @@
     <Compile Include="Login_Cadastro\UsuarioDAO.cs" />
     <Compile Include="Login_Cadastro\UsuarioCadastro.cs" />
     <Compile Include="Login_Cadastro\UsuarioLogin.cs" />
+    <Compile Include="Produtos\ProdutoDAO.cs" />
     <Compile Include="Produtos\Produtos.cs" />
     <Compile Include="Produtos\ProdutoCadastro.cs" />
     <Compile Include="Login_Cadastro\Usuario.cs" />
+    <Compile Include="Produtos\SelecaoProduto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Turnos\Turnos.cs" />

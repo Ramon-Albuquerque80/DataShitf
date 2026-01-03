@@ -10,13 +10,13 @@ namespace Produto
     {
 
         //Dados necessários para cadastrar novos produtos
-        private string NOME { get; set; }
-        private double PRECO { get; set; }
-        private string TIPO { get; set; }
-        private string PERECIVEL { get; set; }
+        public string NOME { get; set; }
+        public decimal PRECO { get; set; }
+        public string TIPO { get; set; }    
+        public string PERECIVEL { get; set; }
 
         //Construtor para Produtos
-        private Produtos(string NOME, double PRECO, string TIPO, string PERECIVEL)
+        public Produtos(string NOME, decimal PRECO, string TIPO, string PERECIVEL)
         {
 
             //this faz referência aos atributos da classe e não aos parâmetros do construtor
@@ -27,8 +27,31 @@ namespace Produto
 
         }
 
+        public static void Decisao()
+        {
+
+            Console.Write("\nDeseja cadastrar ou selecionar um produto existente? (c/s)");
+            char resposta = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            if (resposta == 'c' || resposta == 'C')
+            {
+                CadastroProduto();
+            }
+            else if (resposta == 's' || resposta == 'S')
+            {
+                //Lógica para selecionar um produto existente
+            }
+            else
+            {
+
+                Console.WriteLine("Resposta inválida. Por favor, responda com 'c' ou 's'.");
+                Decisao();
+            }
+        }
+
         //Função para exibir o produto cadastrado
-        private void ExibeProduto()
+        public void ExibeProduto()
         {
             
             Console.WriteLine("\nProduto cadastrado com sucesso!");

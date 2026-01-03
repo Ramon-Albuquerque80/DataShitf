@@ -19,7 +19,7 @@ namespace Produto
             string nomeproduto = Console.ReadLine();
 
             Console.Write("Preço unitário do produto: R$");
-            double precoproduto = Convert.ToDouble(Console.ReadLine());
+            decimal precoproduto = Convert.ToDecimal(Console.ReadLine());
 
             Console.Write("Categoria do produto: ");
             string tipoproduto = Console.ReadLine();
@@ -34,27 +34,74 @@ namespace Produto
                 string perecivel = "Sim";
                 Produtos NovoProduto = new Produtos(nomeproduto, precoproduto, tipoproduto, perecivel);
                 NovoProduto.ExibeProduto();
+
+                try
+                {
+                    ProdutoDAO dao = new ProdutoDAO();
+                    // Manda salvar no banco
+                    dao.CadastrarProduto(NovoProduto);
+                    // Se chegou aqui, é porque salvou!
+                    Console.WriteLine("Sucesso! O produto foi salvo no banco de dados!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ops! Houve um erro ao salvar no banco: " + ex.Message);
+                }
+
+                Console.WriteLine("Deseja cadastrar outro produto? (s/n)");
+                char resposta = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+
+                if (resposta == 's' || resposta == 'S')
+                {
+                    Console.WriteLine();
+                    CadastroProduto();
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Cadastramento encerrado!");
+                }
+
             }
-            else
+            else if(produtoperecivel == 'n' || produtoperecivel == 'N')
             {
                 string perecivel = "Não";
                 Produtos NovoProduto = new Produtos(nomeproduto, precoproduto, tipoproduto, perecivel);
                 NovoProduto.ExibeProduto();
-            }
 
-            Console.WriteLine("Deseja cadastrar outro produto? (s/n)");
-            char resposta = Console.ReadKey().KeyChar;
-            Console.WriteLine();
+                try
+                {
+                    ProdutoDAO dao = new ProdutoDAO();
+                    // Manda salvar no banco
+                    dao.CadastrarProduto(NovoProduto);
+                    // Se chegou aqui, é porque salvou!
+                    Console.WriteLine("Sucesso! O produto foi salvo no banco de dados!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ops! Houve um erro ao salvar no banco: " + ex.Message);
+                }
 
-            if(resposta == 's' || resposta == 'S')
-            {
+                Console.WriteLine("Deseja cadastrar outro produto? (s/n)");
+                char resposta = Console.ReadKey().KeyChar;
                 Console.WriteLine();
-                CadastroProduto();
+
+                if (resposta == 's' || resposta == 'S')
+                {
+                    Console.WriteLine();
+                    CadastroProduto();
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Cadastramento encerrado!");
+                }
             }
             else
             {
-                Console.WriteLine();
-                Console.WriteLine("Cadastramento encerrado!");
+                Console.WriteLine("Resposta inválida. Por favor, responda com 's' ou 'n'.");
+                CadastroProduto();
             }
         }
     }

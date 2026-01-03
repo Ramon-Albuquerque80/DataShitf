@@ -50,6 +50,7 @@ namespace Login
             else
             {
                 Console.WriteLine("\nResposta inváliada. Por favor, responda com 's' ou 'n'.");
+                ContaExistente();
             }
         }
     }

@@ -14,10 +14,10 @@ namespace DataShift
         {
 
             //Realiza o cadastramento de usuários no sistema utilizando a classe Usuario
-            Usuario.ContaExistente();
+            //Usuario.ContaExistente();
 
             //Realiza o cadastramento de produtos utilizando a classe Produtos de maneira recursiva
-            //Produtos.CadastroProduto();
+            Produtos.Decisao();
 
             //Turnos.Turno();
             
