@@ -1,6 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
 using System.Data;
-using MySql.Data.MySqlClient;
 
 namespace Produto
 {
@@ -28,6 +29,42 @@ namespace Produto
                     throw;
                 }
             }
+        }
+
+        public List<Produtos> ListarTodos()
+        {
+            List<Produtos> listaRetorno = new List<Produtos>();
+
+            using (MySqlConnection ponte = new MySqlConnection(Conexao))
+            {
+                try
+                {
+                    ponte.Open();
+                    string query = "SELECT * FROM produtos";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, ponte))
+                    using (MySqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        while (leitor.Read())
+                        {
+                            Produtos p = new Produtos();
+
+                            p.ID = leitor.GetInt32("Id");
+                            p.NOME = leitor.GetString("NOME");
+                            p.PRECO = leitor.GetDecimal("PRECO");
+                            p.TIPO = leitor.GetString("TIPO");
+                            p.PERECIVEL = leitor.GetString("PERECIVEL");
+
+                            listaRetorno.Add(p);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Erro ao listar: " + ex.Message);
+                }
+            }
+            return listaRetorno;
         }
     }
 }

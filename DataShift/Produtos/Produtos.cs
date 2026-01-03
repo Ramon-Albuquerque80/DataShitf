@@ -10,6 +10,7 @@ namespace Produto
     {
 
         //Dados necessários para cadastrar novos produtos
+        public int ID { get; set; }
         public string NOME { get; set; }
         public decimal PRECO { get; set; }
         public string TIPO { get; set; }    
@@ -27,6 +28,8 @@ namespace Produto
 
         }
 
+        public Produtos() { }
+
         public static void Decisao()
         {
 
@@ -41,6 +44,7 @@ namespace Produto
             else if (resposta == 's' || resposta == 'S')
             {
                 //Lógica para selecionar um produto existente
+                SelecaoProduto();
             }
             else
             {
