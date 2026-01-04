@@ -8,12 +8,13 @@ namespace Login
 {
     public partial class Usuario
     {
-        //Dados do usuário
+        //Cria os atributos da classe Usuario
         public int ID { get; set; }
         public string NOME { get; set; }
         public string EMAIL { get; set; }
         public string SENHA { get; set; }
 
+        //Construtor vazio
         public Usuario() { }
 
         //Construtor

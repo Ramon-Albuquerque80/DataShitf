@@ -8,7 +8,7 @@ namespace Login
 {
     public partial class Usuario
     {
-
+        //Método para realizar novo cadastro de usuário
         public static void NovoCadastro()
         {
 
@@ -26,23 +26,27 @@ namespace Login
             Console.Write("Confirme a senha:");
             string confirmasenha = Console.ReadLine();
 
+            //Realiza a verificação se as senhas correspondem
             if(senhausuario == confirmasenha)
             {
 
                 Usuario NovoUsuario = new Usuario(nomeusuario, emailusuario, senhausuario);
                 Console.WriteLine(NovoUsuario.NOME + ", seu cadastro foi realizado com êxito!");
+                //Exibe os dados do novo usuário
                 NovoUsuario.ExibirDados();
 
+                //Tenta salvar no banco de dados
                 try
                 {
+                    //Cria o objeto DAO
                     UsuarioDAO dao = new UsuarioDAO();
 
-                    // Manda salvar no banco
+                    //Salva no banco
                     dao.CadastrarUsuario(NovoUsuario);
 
-                    // Se chegou aqui, é porque salvou!
                     Console.WriteLine("\nSucesso! " + NovoUsuario.NOME + ", seu cadastro foi salvo no banco de dados!");
                 }
+                //Captura possíveis erros ao salvar no banco
                 catch (Exception ex)
                 {
                     Console.WriteLine("\nOps! Houve um erro ao salvar no banco: " + ex.Message);

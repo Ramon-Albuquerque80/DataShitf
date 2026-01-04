@@ -28,6 +28,8 @@ namespace Produto
             char produtoperecivel = Console.ReadKey().KeyChar;
             Console.WriteLine();
 
+
+            //Lógica de decisão para decidir se é perecível ou não
             if (produtoperecivel == 's' || produtoperecivel == 'S')
             {
 
@@ -35,12 +37,13 @@ namespace Produto
                 Produtos NovoProduto = new Produtos(nomeproduto, precoproduto, tipoproduto, perecivel);
                 NovoProduto.ExibeProduto();
 
+                //Tenta salvar no banco de dados
                 try
                 {
                     ProdutoDAO dao = new ProdutoDAO();
-                    // Manda salvar no banco
+                    //Salva no banco
                     dao.CadastrarProduto(NovoProduto);
-                    // Se chegou aqui, é porque salvou!
+                   
                     Console.WriteLine("Sucesso! O produto foi salvo no banco de dados!");
                 }
                 catch (Exception ex)
@@ -48,12 +51,14 @@ namespace Produto
                     Console.WriteLine("Ops! Houve um erro ao salvar no banco: " + ex.Message);
                 }
 
+                //Pergunta se deseja cadastrar mais produto
                 Console.WriteLine("Deseja cadastrar outro produto? (s/n)");
                 char resposta = Console.ReadKey().KeyChar;
                 Console.WriteLine();
 
                 if (resposta == 's' || resposta == 'S')
                 {
+                    //Chama a função de forma recursiva para cadastrar outro produto
                     Console.WriteLine();
                     CadastroProduto();
                 }
@@ -67,15 +72,17 @@ namespace Produto
             else if(produtoperecivel == 'n' || produtoperecivel == 'N')
             {
                 string perecivel = "Não";
+                //Cria o objeto NovoProduto
                 Produtos NovoProduto = new Produtos(nomeproduto, precoproduto, tipoproduto, perecivel);
                 NovoProduto.ExibeProduto();
 
+                //Tenta salvar no banco de dados
                 try
                 {
                     ProdutoDAO dao = new ProdutoDAO();
-                    // Manda salvar no banco
+                    //Salva no banco
                     dao.CadastrarProduto(NovoProduto);
-                    // Se chegou aqui, é porque salvou!
+
                     Console.WriteLine("Sucesso! O produto foi salvo no banco de dados!");
                 }
                 catch (Exception ex)
@@ -89,6 +96,7 @@ namespace Produto
 
                 if (resposta == 's' || resposta == 'S')
                 {
+                    //Chama a função novamente de maneira recursiva para cadastrar outro produto
                     Console.WriteLine();
                     CadastroProduto();
                 }
@@ -100,6 +108,7 @@ namespace Produto
             }
             else
             {
+                //Chama a função mais uma vez de maneira recursiva caso a resoista seja inválida
                 Console.WriteLine("Resposta inválida. Por favor, responda com 's' ou 'n'.");
                 CadastroProduto();
             }
