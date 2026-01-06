@@ -1,0 +1,11 @@
+# Pastas de compilação (lixo)
+bin/
+obj/
+
+# Arquivos de usuário e configuração do VS
+.vs/
+*.user
+*.suo
+
+# Arquivos de ambiente (se você criar um dia)
+.env
