@@ -2,52 +2,18 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace Login
+namespace DataShift.Login_Cadastro  
 {
     public class UsuarioDAO
     {
         //String de conexão com banco de dados
         private string Conexao = "Server=localhost;Database=CadastroLogin;Uid=root;Pwd=senha1234321;";
 
-        //Método para cadastrar usuário no banco de dados
-        public void CadastrarUsuario(Usuario user)
-        {
-            //Usa o 'using' para garantir que a conexão será fechada corretamente
-            using(MySqlConnection ponte = new MySqlConnection(Conexao))
-            {
-            try
-            {
-                //Abre a conexão
-                ponte.Open();
-                string query = "INSERT INTO usuarios (NOME, EMAIL, SENHA) VALUES (@NOME, @EMAIL, @SENHA)";
-
-                //Cria o comando SQL
-                MySqlCommand cmd = new MySqlCommand(query, ponte);
-
-                //Adiciona os parâmetros para evitar SQL Injection
-                cmd.Parameters.AddWithValue("@NOME", user.NOME);
-                cmd.Parameters.AddWithValue("@EMAIL", user.EMAIL);
-                cmd.Parameters.AddWithValue("@SENHA", user.SENHA);
-
-                //Executa o comando
-                cmd.ExecuteNonQuery();
-            }
-                //Captura qualquer erro que ocorra durante o processo
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Erro ao cadastrar usuário: " + ex.Message);
-                    //Relança a exceção para tratamento posterior, se necessário
-                    throw;
-                }
-            }
-        }
-        //Método para verificar login de usuário
         public bool VerificarLogin(Usuario user)
         {
-            //Usa p 'using' garantir que a conexão será fechada corretamente
             using (MySqlConnection ponte = new MySqlConnection(Conexao))
             {
-                //Tenta abrir a conexão e executar p comando
+              
                 try
                 {
                     //Abre a conexão
@@ -58,19 +24,43 @@ namespace Login
 
                     //Cria o comando SQL
                     MySqlCommand cmd = new MySqlCommand(query, ponte);
-                    //Adiciona os parâmetros para evitar SQL Injection
-                    cmd.Parameters.AddWithValue("@email", user.EMAIL);
-                    cmd.Parameters.AddWithValue("@senha", user.SENHA);
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@senha", user.Senha);
 
-                    //Executa o comando e obtém o leitor de dados
                     MySqlDataReader leitor = cmd.ExecuteReader();
-
-                    // HasRows retorna 'true' se encontrou alguma linha (usuário existe)
                     return leitor.HasRows;
                 }
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao verificar login: " + ex.Message);
+                }
+            }
+        }
+
+        public void CadastrarUsuario(Usuario usuario)
+        {
+            string conexaoString = "server=localhost;database=CadastroLogin;uid=root;pwd=senha1234321";
+
+            string query = "INSERT INTO usuarios (NOME, EMAIL, SENHA) VALUES (@nome, @email, @senha)";
+
+            using (MySqlConnection conexao = new MySqlConnection(conexaoString))
+            {
+                try
+                {
+                    conexao.Open();
+                    using (MySqlCommand comando = new MySqlCommand(query, conexao))
+                    {
+                        comando.Parameters.AddWithValue("@nome", usuario.Nome);
+                        comando.Parameters.AddWithValue("@email", usuario.Email);
+                        comando.Parameters.AddWithValue("@senha", usuario.Senha);
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Se der erro, joga o erro para quem chamou tratar
+                    throw new Exception("Erro ao cadastrar no banco: " + ex.Message);
                 }
             }
         }

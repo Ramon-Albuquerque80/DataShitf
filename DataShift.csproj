@@ -100,15 +100,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Login_Cadastro\TelaCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_Cadastro\TelaCadastro.Designer.cs">
+      <DependentUpon>TelaCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login_Cadastro\TelaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_Cadastro\TelaLogin.Designer.cs">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login_Cadastro\Usuario.cs" />
     <Compile Include="Login_Cadastro\UsuarioDAO.cs" />
-    <Compile Include="Login_Cadastro\UsuarioCadastro.cs" />
-    <Compile Include="Login_Cadastro\UsuarioLogin.cs" />
     <Compile Include="Producao\ProducaoDAO.cs" />
     <Compile Include="Producao\Registro.cs" />
     <Compile Include="Produtos\ProdutoDAO.cs" />
     <Compile Include="Produtos\Produtos.cs" />
     <Compile Include="Produtos\ProdutoCadastro.cs" />
-    <Compile Include="Login_Cadastro\Usuario.cs" />
     <Compile Include="Produtos\SelecaoProduto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,7 +137,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <EmbeddedResource Include="Login_Cadastro\TelaCadastro.resx">
+      <DependentUpon>TelaCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_Cadastro\TelaLogin.resx">
+      <DependentUpon>TelaLogin.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
