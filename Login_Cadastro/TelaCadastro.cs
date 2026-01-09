@@ -21,12 +21,21 @@ namespace DataShift.Login_Cadastro
 
         private void ConfigurarPlaceholders()
         {
+            if (TxtBoxNome != null) { TxtBoxNome.Text = "Insira seu Nome Completo"; TxtBoxNome.ForeColor = Color.Gray; }
             if (TxtBoxEmail != null) { TxtBoxEmail.Text = "Insira seu E-mail"; TxtBoxEmail.ForeColor = Color.Gray; }
             if (TxtBoxSenha != null) { TxtBoxSenha.Text = "Crie uma Senha"; TxtBoxSenha.ForeColor = Color.Gray; TxtBoxSenha.UseSystemPasswordChar = false; }
             if (TxtBoxConfirma != null) { TxtBoxConfirma.Text = "Repita a Senha"; TxtBoxConfirma.ForeColor = Color.Gray; TxtBoxConfirma.UseSystemPasswordChar = false; }
         }
 
-       
+        private void TxtBoxNome_Enter(object sender, EventArgs e)
+        {
+            if (TxtBoxNome.Text == "Insira seu Nome Completo") { TxtBoxNome.Text = ""; TxtBoxNome.ForeColor = Color.Black; }
+        }
+
+        private void TxtBoxNome_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TxtBoxNome.Text)) { TxtBoxNome.Text = "Insira seu Nome Completo"; TxtBoxNome.ForeColor = Color.Gray; }
+        }
         private void TxtBoxEmail_Enter(object sender, EventArgs e)
         {
             if (TxtBoxEmail.Text == "Insira seu E-mail") { TxtBoxEmail.Text = ""; TxtBoxEmail.ForeColor = Color.Black; }
@@ -72,7 +81,7 @@ namespace DataShift.Login_Cadastro
             {
                 // Cria o pacote de dados
                 Usuario novoUsuario = new Usuario();
-                novoUsuario.Nome = "Novo Usuário"; 
+                novoUsuario.Nome = TxtBoxNome.Text; 
                 novoUsuario.Email = TxtBoxEmail.Text;
                 novoUsuario.Senha = TxtBoxSenha.Text;
 
@@ -100,5 +109,7 @@ namespace DataShift.Login_Cadastro
             this.Close();
 
         }
+
+
     }
 }
