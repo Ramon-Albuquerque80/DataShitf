@@ -114,6 +114,12 @@
     </Compile>
     <Compile Include="Login_Cadastro\Usuario.cs" />
     <Compile Include="Login_Cadastro\UsuarioDAO.cs" />
+    <Compile Include="Menu Principal\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu Principal\MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producao\ProducaoDAO.cs" />
     <Compile Include="Producao\Registro.cs" />
     <Compile Include="Produtos\ProdutoDAO.cs" />
@@ -127,10 +133,15 @@
     <Compile Include="Relatorios\RelatorioAnalitico.cs" />
     <Compile Include="Relatorios\RelatorioDAO.cs" />
     <Compile Include="Relatorios\RelatorioIA.cs" />
-    <Compile Include="Turnos\TurnoCadastro.cs" />
+    <Compile Include="Turnos\CadastroTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Turnos\CadastroTurno.Designer.cs">
+      <DependentUpon>CadastroTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Turnos\Sessao.cs" />
     <Compile Include="Turnos\TurnoDAO.cs" />
     <Compile Include="Turnos\Turno.cs" />
-    <Compile Include="Turnos\TurnoSelecao.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -142,6 +153,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login_Cadastro\TelaLogin.resx">
       <DependentUpon>TelaLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu Principal\MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Turnos\CadastroTurno.resx">
+      <DependentUpon>CadastroTurno.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

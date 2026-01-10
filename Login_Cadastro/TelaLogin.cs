@@ -96,11 +96,12 @@ namespace DataShift.Login_Cadastro
 
                 if (loginSucesso)
                 {
-                    MessageBox.Show("Bem-vindo ao DataShift!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    DataShift.Menu_Principal.MainMenu Tela = new DataShift.Menu_Principal.MainMenu();
+                    Tela.Show();
                     this.Hide();
 
-                    MessageBox.Show("Entrou!");
+                    MessageBox.Show("Bem Vindo!");
                 }
                 else
                 {

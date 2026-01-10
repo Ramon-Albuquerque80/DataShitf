@@ -1,40 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace Turnos
+namespace DataShift.Turnos
 {
-    
     public class TurnoDAO
     {
-        private string Conexao = "Server=localhost;Database=CadastroLogin;Uid=root;Pwd=senha1234321;";
+        private string stringConexao = "server=localhost;database=DataShiftDB;uid=root;pwd=senha1234321";
 
         public void CadastrarTurno(Turno turno)
         {
-            using (MySqlConnection ponte = new MySqlConnection(Conexao))
+            using (MySqlConnection conexao = new MySqlConnection(stringConexao))
             {
-                try
-                {
-                    ponte.Open();
-                    // ATENÇÃO: Verifique se no banco está 'lider_do_periodo' ou outro nome
-                    string query = "INSERT INTO Turnos (Lider, Periodo, Inicio, Fim) VALUES (@lider, @periodo, @inicio, @fim)";
+                conexao.Open();
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, ponte))
-                    {
-                        cmd.Parameters.AddWithValue("@lider", turno.Lider);
-                        cmd.Parameters.AddWithValue("@periodo", turno.Periodo);
-                        cmd.Parameters.AddWithValue("@inicio", turno.Inicio);
-                        cmd.Parameters.AddWithValue("@fim", turno.Fim);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
+                string query = "INSERT INTO turnos (LIDER, PERIODO, INICIO, FIM) VALUES ( @lider, @periodo, @inicio, @fim)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conexao))
                 {
-                    Console.WriteLine("Erro ao cadastrar: " + ex.Message);
+                    cmd.Parameters.AddWithValue("@lider", turno.Lider);
+                    cmd.Parameters.AddWithValue("@periodo", turno.Periodo);
+                    cmd.Parameters.AddWithValue("@inicio", turno.Inicio);
+                    cmd.Parameters.AddWithValue("@fim", turno.Fim);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
@@ -42,36 +32,23 @@ namespace Turnos
         public List<Turno> ListarTodos()
         {
             List<Turno> lista = new List<Turno>();
-            using (MySqlConnection ponte = new MySqlConnection(Conexao))
+            using (MySqlConnection conexao = new MySqlConnection(stringConexao))
             {
-                try
+                conexao.Open();
+                string query = "SELECT * FROM turnos";
+                using (MySqlCommand cmd = new MySqlCommand(query, conexao))
+                using (MySqlDataReader leitor = cmd.ExecuteReader())
                 {
-                    ponte.Open();
-                    string query = "SELECT * FROM Turnos";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, ponte))
-                    using (MySqlDataReader leitor = cmd.ExecuteReader())
+                    while (leitor.Read())
                     {
-                        while (leitor.Read())
-                        {
-                            Turno t = new Turno();
-                            t.ID = leitor.GetInt32("id");
-
-                            // Mapeando as colunas novas
-                            // Se der erro aqui, confira o nome exato da coluna no Workbench
-                            t.Lider = leitor.GetString("lider");
-                            t.Periodo = leitor.GetString("Periodo");
-
-                            t.Inicio = leitor.GetTimeSpan("Inicio");
-                            t.Fim = leitor.GetTimeSpan("Fim");
-
-                            lista.Add(t);
-                        }
+                        Turno t = new Turno();
+                        t.Id = leitor.GetInt32("ID");
+                        t.Periodo = leitor["PERIODO"].ToString();
+                        t.Lider = leitor["LIDER"].ToString();
+                        t.Inicio = leitor.GetTimeSpan("INICIO"); // O MySQL devolve TimeSpan direto
+                        t.Fim = leitor.GetTimeSpan("FIM");
+                        lista.Add(t);
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Erro ao listar: " + ex.Message);
                 }
             }
             return lista;

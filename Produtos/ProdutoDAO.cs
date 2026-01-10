@@ -7,7 +7,7 @@ namespace Produto
 {
     public class ProdutoDAO
     {
-        private string Conexao = "Server=localhost;Database=ProdutoCadastro;Uid=root;Pwd=senha1234321;";
+        private string Conexao = "Server=localhost;Database=DataShiftDB;Uid=root;Pwd=senha1234321;";
         public void CadastrarProduto(Produtos produto)
         {
             using (MySqlConnection ponte = new MySqlConnection(Conexao))

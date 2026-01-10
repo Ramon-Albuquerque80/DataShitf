@@ -16,6 +16,7 @@ namespace Produto
         public decimal PRECO { get; set; }
         public string TIPO { get; set; }    
         public string PERECIVEL { get; set; }
+        public int TURNO_ID { get; set; }
 
         //Construtor para Produtos
         public Produtos(string NOME, decimal PRECO, string TIPO, string PERECIVEL)

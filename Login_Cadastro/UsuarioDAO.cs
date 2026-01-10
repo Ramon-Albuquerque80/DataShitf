@@ -7,7 +7,7 @@ namespace DataShift.Login_Cadastro
     public class UsuarioDAO
     {
         //String de conexão com banco de dados
-        private string Conexao = "Server=localhost;Database=CadastroLogin;Uid=root;Pwd=senha1234321;";
+        private string Conexao = "Server=localhost;Database=DataShiftDB;Uid=root;Pwd=senha1234321;";
 
         public bool VerificarLogin(Usuario user)
         {
@@ -39,7 +39,7 @@ namespace DataShift.Login_Cadastro
 
         public void CadastrarUsuario(Usuario usuario)
         {
-            string conexaoString = "server=localhost;database=CadastroLogin;uid=root;pwd=senha1234321";
+            string conexaoString = "server=localhost;database=DataShiftDB;uid=root;pwd=senha1234321";
 
             string query = "INSERT INTO usuarios (NOME, EMAIL, SENHA) VALUES (@nome, @email, @senha)";
 

@@ -1,48 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Turnos
+namespace DataShift.Turnos
 {
-    public partial class Turno
+    public class Turno
     {
-        
-        public int ID { get; set; }
+        public int Id { get; set; } 
         public string Lider { get; set; }
-        public string Periodo { get; set; }
-        //TimeSpan representa um intervalo de tempo
+        public string Periodo { get; set; } 
         public TimeSpan Inicio { get; set; }
         public TimeSpan Fim { get; set; }
 
         public Turno() { }
 
-        public Turno(string Lider, string Periodo, TimeSpan Inicio, TimeSpan Fim)
+        public Turno(string lider, string periodo, TimeSpan inicio, TimeSpan fim)
         {
-
-            this.Lider = Lider;
-            this.Periodo = Periodo;
-            this.Inicio = Inicio;
-            this.Fim = Fim;
-
+            this.Lider = lider;
+            this.Periodo = periodo;
+            this.Inicio = inicio;
+            this.Fim = fim;
         }
-
-        public static void Decisao() {
-
-            Console.Clear();
-            Console.WriteLine("Deseja selecionar ou cadastrar um turno? (s/c)");
-            char resposta = char.ToUpper(Console.ReadKey().KeyChar);
-
-            if(resposta == 'S')
-            {
-                TurnoSelecao();
-
-            } else if(resposta == 'C')
-            {
-                TurnoCadastro();
-            }
-        }
-
     }
 }
