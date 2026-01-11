@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq; // Essencial para cálculos como Média
 using Spectre.Console; // A biblioteca de gráficos
-using Produto;
+using DataShift.Produtos;
 
 namespace Relatorios
 {
@@ -95,7 +95,7 @@ namespace Relatorios
             Console.ReadLine();
 
             // Opcional: Chama o menu de volta se quiser
-            Produtos.SelecaoProduto();
+            //Produtos.SelecaoProduto();
         }
     }
 }

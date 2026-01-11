@@ -122,10 +122,14 @@
     </Compile>
     <Compile Include="Producao\ProducaoDAO.cs" />
     <Compile Include="Producao\Registro.cs" />
+    <Compile Include="Produtos\CadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\CadastroProduto.Designer.cs">
+      <DependentUpon>CadastroProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produtos\ProdutoDAO.cs" />
     <Compile Include="Produtos\Produtos.cs" />
-    <Compile Include="Produtos\ProdutoCadastro.cs" />
-    <Compile Include="Produtos\SelecaoProduto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios\DadosDetalhados.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu Principal\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\CadastroProduto.resx">
+      <DependentUpon>CadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Turnos\CadastroTurno.resx">
       <DependentUpon>CadastroTurno.cs</DependentUpon>

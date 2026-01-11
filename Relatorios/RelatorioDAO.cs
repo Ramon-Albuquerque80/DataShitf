@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Producao;
-using Produto;
+using DataShift.Produtos;
 using Relatorios;
 using Spectre.Console;
 using System;

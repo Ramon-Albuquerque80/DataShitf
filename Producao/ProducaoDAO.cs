@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using Produto;
 using System.Data;
 
 namespace Producao

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Producao;
 using Spectre.Console;
-using Produto;
+using DataShift.Produtos;
 using System.Linq;
 
 namespace Relatorios
